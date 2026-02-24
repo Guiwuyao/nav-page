@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花喵国早朝</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="bg-image"></div>
+    
+    <div class="container">
+        <header>
+            <h1 id="clock">00:00</h1>
+            <p id="date">YYYY年MM月DD日</p>
+        </header>
+
+	<div class="search-box">
+				<form id="search-form" action="https://www.bing.com/search" method="GET" target="_blank">
+					<select id="engine-select" onchange="changeEngine()">
+						<option value="bing">必应</option>
+						<option value="google">谷歌</option>
+						<option value="baidu">百度</option>
+					</select>
+					<input type="text" id="search-input" name="q" placeholder="使用 Bing 搜索..." autocomplete="off" autofocus>
+					<button type="submit">🔍</button>
+				</form>
+	</div>
+
+        <main class="bookmarks">
+            <div class="category">
+                <h2>💻 常用工具</h2>
+                <div class="links">
+                    <a href="https://yongzhi-lee.github.io/666_Things_to_WriteAbout/" target="_blank">666件事</a>
+                    <a href="https://chat.deepseek.com/" target="_blank">Deepseek</a>
+                    <a href="https://www.qianwen.com/" target="_blank">千问</a>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>🍿 影音娱乐</h2>
+                <div class="links">
+                    <a href="https://bilibili.com" target="_blank">哔哩哔哩</a>
+                    <a href="https://vidhub2.top/" target="_blank">Vidhub</a>
+                    <a href="https://music.163.com/" target="_blank">网易云音乐</a>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2>📚 学习阅读</h2>
+                <div class="links">
+                    <a href="https://weread.qq.com/" target="_blank">微信读书</a>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

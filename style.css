@@ -1,0 +1,212 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+/* 给 body 增加一个深色底色，防止背景图加载失败时一片死白 */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background-color: #1a1a2e; /* 保底深色 */
+}
+
+/* 背景图设置区 */
+.bg-image {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    
+    /* 设置一点底色防瞎眼 */
+    background-color: #1a1a2e; 
+    
+    /* 直接调用你刚才上传的本地图片 */
+    background-image: url('bg.jpg'); 
+    
+    /* 让图片铺满屏幕且不变形 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2rem 0;
+}
+
+header {
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 加深文字阴影，提高对比度 */
+}
+
+#clock {
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+#date {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+}
+
+.search-box form {
+    display: flex;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 8px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    transition: background 0.3s ease;
+}
+
+.search-box form:focus-within {
+    background: rgba(255, 255, 255, 0.2);
+}
+/* 搜索引擎选择器美化 */
+.search-box select {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 5px;
+    outline: none;
+    cursor: pointer;
+    /* 隐藏浏览器默认的丑陋下拉箭头 */
+    appearance: none; 
+    -webkit-appearance: none;
+    /* 右侧加一条半透明分割线 */
+    border-right: 1px solid rgba(255, 255, 255, 0.3); 
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+/* 下拉选项的背景色，防止白底白字看不清 */
+.search-box select option {
+    background: #203a43; 
+    color: white;
+}
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-box button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: transform 0.2s ease;
+}
+
+.search-box button:hover {
+    transform: scale(1.1);
+}
+
+.bookmarks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.category {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+    
+    /* 👇 新增：固定卡片高度（你可以根据需要修改 240px 这个数值） */
+    height: 240px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.category h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    
+    /* 👇 新增：自动填满卡片剩余高度，超出则显示滚动条 */
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px; /* 给右侧滚动条留出一点呼吸空间 */
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.links a:hover {
+    opacity: 1;
+    transform: translateX(5px);
+}
+/* ================================
+   自定义滚动条美化 (毛玻璃风格)
+   ================================ */
+.links::-webkit-scrollbar {
+    width: 6px; /* 滚动条的宽度 */
+}
+
+.links::-webkit-scrollbar-track {
+    background: transparent; /* 轨道透明 */
+}
+
+.links::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2); /* 半透明白色滑块 */
+    border-radius: 10px; /* 圆角 */
+}
+
+.links::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4); /* 鼠标悬浮时稍微亮一点 */
+}
